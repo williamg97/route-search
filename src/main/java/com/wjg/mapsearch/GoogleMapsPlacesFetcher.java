@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class GoogleMapsPlacesFetcher {
 
     private static final Logger logger = LoggerFactory.getLogger(GoogleMapsPlacesFetcher.class);
-    private GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyDFTxyOhsF2cTFSSsGXy5zngdAmI10jTAQ").build();
+    private GeoApiContext context = new GeoApiContext.Builder().apiKey("API KEY HERE").build();
 
     // 5000 calls are free a month
     // $40 per 1000

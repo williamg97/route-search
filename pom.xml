@@ -13,8 +13,8 @@
     <groupId>com.wjg</groupId>
     <artifactId>route-search</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mapsearch</name>
-    <description>Demo project for Spring Boot</description>
+    <name>route-search</name>
+    <description>Find POI along a GPX route using Google Maps API</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -43,6 +43,13 @@
             <artifactId>google-maps-services</artifactId>
             <version>0.18.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>4.6.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

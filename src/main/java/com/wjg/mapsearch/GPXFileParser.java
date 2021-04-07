@@ -22,23 +22,9 @@ public class GPXFileParser {
 
     private static final Logger logger = LoggerFactory.getLogger(GPXFileParser.class);
 
-    public void mergeGpxFiles(String file1, String file2, String outputFileName) throws IOException {
-        try(InputStream file1Is = getClass().getClassLoader().getResourceAsStream(file1)) {
-            try(InputStream file2Is = getClass().getClassLoader().getResourceAsStream(file2)) {
-                ArrayList<WayPoint> waypoints = new ArrayList<>();
-                GPX.read(file1Is).wayPoints().forEach(waypoints::add);
-                GPX.read(file2Is).wayPoints().forEach(waypoints::add);
-                GPX.Builder gpx = GPX.builder();
-                waypoints.forEach(gpx::addWayPoint);
-                deduplicateResults(waypoints);
-                GPX.write(gpx.build(), Path.of(outputFileName));
-            }
-        }
-    }
-
     public List<WayPoint> getGpxWaypoints() throws IOException {
         logger.info("Getting GPX waypoints...");
-        try(InputStream is = getClass().getClassLoader().getResourceAsStream("NC500_route.gpx")) {
+        try(InputStream is = getClass().getClassLoader().getResourceAsStream("route.gpx")) {
             ArrayList<WayPoint> latLong = new ArrayList<>();
             GPX.read(is).tracks().flatMap(Track::segments).flatMap(TrackSegment::points).forEach(latLong::add);
             return latLong;
@@ -47,7 +33,7 @@ public class GPXFileParser {
 
     public Length getGpxLength() throws IOException {
         logger.info("Getting GPX length...");
-        try(InputStream is = getClass().getClassLoader().getResourceAsStream("NC500_route.gpx")) {
+        try(InputStream is = getClass().getClassLoader().getResourceAsStream("route.gpx")) {
             return GPX.read(is).tracks().flatMap(Track::segments).findFirst().map(TrackSegment::points).orElse(Stream.empty()).collect(Geoid.WGS84.toPathLength());
         }
     }
@@ -81,8 +67,5 @@ public class GPXFileParser {
         GPX.write(gpx.build(), Path.of("output-waypoints.gpx"));
     }
 
-    private void deduplicateResults(List<WayPoint> waypoints) {
-        HashSet<Object> seen=new HashSet<>();
-        waypoints.removeIf(e->!seen.add(e.getName()));
-    }
+
 }

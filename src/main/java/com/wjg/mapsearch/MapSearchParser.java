@@ -22,24 +22,26 @@ public class MapSearchParser {
 
     private static final Logger logger = LoggerFactory.getLogger(MapSearchParser.class);
 
-    private static final int RADIUS = 12000;
-    private static final int RADIUS_TEXT = 6000;
+    private static final int RADIUS = 12000; // In metres. For nearby search API.
+    private static final int RADIUS_TEXT = 6000; // In metres. Radius to search in text bases searchs
+
+    private static final PlaceType[] TYPES_TO_SEARCH = new PlaceType[] {};
+
+    // Enter places to search
     //private static final PlaceType[] TYPES_TO_SEARCH = new PlaceType[] { PlaceType.BICYCLE_STORE, PlaceType.BAKERY, PlaceType.BAR, PlaceType.TOURIST_ATTRACTION, PlaceType.CAFE, PlaceType.CONVENIENCE_STORE, PlaceType.RESTAURANT, PlaceType.GROCERY_OR_SUPERMARKET, PlaceType.LIQUOR_STORE, PlaceType.GAS_STATION };
     //private static final PlaceType[] TYPES_TO_SEARCH = new PlaceType[] { PlaceType.BAR };
-//    private static final PlaceType[] TYPES_TO_SEARCH = new PlaceType[] {
-//            PlaceType.MEAL_TAKEAWAY,
-//            PlaceType.MEAL_DELIVERY,
-//            PlaceType.NIGHT_CLUB, PlaceType.SPA };
+    //    private static final PlaceType[] TYPES_TO_SEARCH = new PlaceType[] {
+    //            PlaceType.MEAL_TAKEAWAY,
+    //            PlaceType.MEAL_DELIVERY,
+    //            PlaceType.NIGHT_CLUB, PlaceType.SPA };
 
     private GPXFileParser gpxFileParser;
     private GoogleMapsPlacesFetcher googleMapsPlacesFetcher;
-
 
     @Autowired
     public MapSearchParser(GPXFileParser gpxFileParser, GoogleMapsPlacesFetcher googleMapsPlacesFetcher) {
         this.gpxFileParser = gpxFileParser;
         this.googleMapsPlacesFetcher = googleMapsPlacesFetcher;
-        run();
     }
 
     private void run() {
@@ -52,8 +54,7 @@ public class MapSearchParser {
 
             logger.info("Number of requests will be at least: " + (sampledWaypoints.size() * TYPES_TO_SEARCH.length));
 
-            //gpxFileParser.mergeGpxFiles("output_HOSPITAL.gpx", "output_PHARMACY.gpx", "output_merged_HOSPITAL_AND_PHARMACY.gpx");
-
+            // If you want to do text searchs uses this
             //fetchAndSaveTextSearch("distillery", sampledWaypoints);
             //fetchAndSaveTextSearch("toilets", sampledWaypoints);
 
