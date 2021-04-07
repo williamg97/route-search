@@ -54,7 +54,7 @@ public class GPXFileParser {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Status: " + (result.businessStatus != null ? result.businessStatus : "Unknown") + "; ");
         stringBuilder.append("Rating: " + result.rating + "; ");
-        stringBuilder.append("Opening Hours: " + (result.openingHours != null ? result.openingHours.toString() : "Unknown"));
+        //stringBuilder.append("Opening Hours: " + (result.openingHours != null ? result.openingHours.toString() : "Unknown"));
         return stringBuilder.toString();
     }
 
