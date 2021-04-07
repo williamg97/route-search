@@ -5,7 +5,7 @@ I used this to find toilets, bars, restaurants, tourist attractions, supermarket
 
 ## Important
 
-This is still work in progress. I intend to make it more usable via command line.
+This is still work in progress and is not runnable without you making the relevant changes. I intend to make it more usable via command line.
 
 You need your own Google Maps API to make this work. 
 
