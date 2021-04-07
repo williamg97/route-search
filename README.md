@@ -13,6 +13,6 @@ Also make sure you know what you are doing - nearby Google Maps API calls are ex
 
 At the time of writing you get 5000 free API calls a month. After that it costs. $40 per 1000 calls. 
 
-There If you have a large number of waypoints you are searching on this could get expensive. MAKE SURE YOU ADD QUOTAS first so you dont accidently go over the limit. 
+Therefore if you have a large number of waypoints you are searching on this could get expensive. MAKE SURE YOU ADD QUOTAS first so you dont accidently go over the limit. 
 
 You can also adjust sampling rate, radius search etc in MapSearchParser. 
